@@ -1,0 +1,10 @@
+#!/home/mike/MyProjects/flask_family_recipe_project/ffr_env/bin/python3
+# EASY-INSTALL-ENTRY-SCRIPT: 'nose2==0.7.4','console_scripts','nose2'
+__requires__ = 'nose2==0.7.4'
+import sys
+from pkg_resources import load_entry_point
+
+if __name__ == '__main__':
+    sys.exit(
+        load_entry_point('nose2==0.7.4', 'console_scripts', 'nose2')()
+    )
