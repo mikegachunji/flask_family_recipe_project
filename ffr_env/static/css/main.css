@@ -2,3 +2,7 @@ body {
 padding: 60px 0;
 background: #ffffff;
 }
+
+#page-body {
+	margin-top: 30px;
+}
