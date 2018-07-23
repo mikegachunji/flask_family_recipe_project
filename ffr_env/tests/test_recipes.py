@@ -1,4 +1,4 @@
-# project/test.py
+# project/test_recipes.py
  
  
 import unittest
@@ -23,12 +23,6 @@ class ProjectTests(unittest.TestCase):
     # executed after each test
     def tearDown(self):
         pass
- 
- 
-    ########################
-    #### helper methods ####
-    ########################
- 
  
  
     ###############
