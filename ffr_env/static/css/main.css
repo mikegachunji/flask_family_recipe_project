@@ -3,6 +3,11 @@ padding: 60px 0;
 background: #ffffff;
 }
 
+.error {
+  color: red;
+  font-size: .8em;
+}
+
 #page-body {
 	margin-top: 30px;
 }

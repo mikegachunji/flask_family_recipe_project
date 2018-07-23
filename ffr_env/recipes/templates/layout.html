@@ -34,6 +34,9 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Dessert Recipes</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('recipes.add_recipe') }}">Add Recipe</a>
+          </li>
         </ul>
         <ul class="navbar-nav navbar-right">
           <li class="nav-item">
@@ -43,6 +46,25 @@
           
       </div>
     </nav>
+
+     <!-- flash messages -->
+    {% for error_message in get_flashed_messages(category_filter=["error"]) %}
+
+    <div class="alert alert-danger alert-dismissible">{{ error_message }}</div>
+
+    {% endfor %}
+
+    {% for success_message in get_flashed_messages(category_filter=["success"]) %}
+
+    <div class="alert alert-success alert-dismissible">{{ success_message }}</div>
+
+    {% endfor %}
+
+    {% for info_message in get_flashed_messages(category_filter=["info"]) %}
+
+    <div class="alert alert-info alert-dismissible">{{ info_message }}</div>
+
+    {% endfor %}
     
     <div class="container">
       <div class="content">
