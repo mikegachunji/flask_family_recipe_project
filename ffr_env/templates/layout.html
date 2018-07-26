@@ -22,24 +22,25 @@
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
+          {% if current_user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="#">Breakfast Recipes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Lunch Recipes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Dinner Recipes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Dessert Recipes</a>
+            <a class="nav-link" href="{{ url_for('recipes.index') }}">Public Recipes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('recipes.add_recipe') }}">Add Recipe</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('users.logout') }}">Log Out</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
             <a class="nav-link" href="{{ url_for('users.register') }}">Register</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('users.login') }}">Log In</a>
+          </li>
+          {% endif %}
+          
         </ul>
         <ul class="navbar-nav navbar-right">
           <li class="nav-item">
