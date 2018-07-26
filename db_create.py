@@ -1,5 +1,5 @@
 from ffr_env import db
-from ffr_env.models import Recipe
+from ffr_env.models import Recipe, User
  
  
 # drop all of the existing database tables
@@ -17,4 +17,15 @@ db.session.add(recipe2)
 db.session.add(recipe3)
  
 # commit the changes
+db.session.commit()
+
+# insert user data
+user1 = User('mikegachunji@yahoo.com', 'mikegachunji')
+user2 = User('kennedyfamilyrecipes@gmail.com', 'kennedyfamilyrecipes')
+user3 = User('blaa@blaa.com', 'blaa')
+db.session.add(user1)
+db.session.add(user2)
+db.session.add(user3)
+ 
+# commit the changes for the recipes
 db.session.commit()
