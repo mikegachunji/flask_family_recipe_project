@@ -10,7 +10,9 @@ from flask_login import LoginManager, login_required, login_user, current_user, 
 from sqlalchemy.exc import IntegrityError
 from ffr_env.users.forms import RegisterForm, LoginForm
 from ffr_env.models import User
-from ffr_env import db
+from ffr_env import db, mail
+from flask_mail import Message
+from threading import Thread
  
  
 ################
@@ -18,8 +20,13 @@ from ffr_env import db
 ################
  
 users_blueprint = Blueprint('users', __name__)
- 
- 
+
+def send_email(subject, recipients, text_body, html_body):
+    msg = Message(subject, recipients=recipients)
+    msg.body = text_body
+    msg.html = html_body
+    mail.send(msg)
+    
 ################
 #### routes ####
 ################
@@ -34,6 +41,11 @@ def register():
                 new_user.authenticated = True
                 db.session.add(new_user)
                 db.session.commit()
+                send_email('Registration',
+                           ['mikegachunji@gmail.com'],
+                           'Thanks for registering with Gachunji Family Recipes!',
+                           '<h3>Thanks for registering with Gachunji Family Recipes!</h3>')
+ 
                 flash('Thanks for registering!', 'success')
                 return redirect(url_for('recipes.index'))
             except IntegrityError:
@@ -69,3 +81,4 @@ def logout():
     logout_user()
     flash('Goodbye!', 'info')
     return redirect(url_for('users.login'))
+
